@@ -1,4 +1,7 @@
 (function(fucking_eu_localizations, w, d){
+	var includes = <%= JSON.stringify({
+				css: css
+			}) %>;
 	function init() {
 		console.log(d.readyState);
 		if ( d.readyState === 'complete' ) {
@@ -17,8 +20,8 @@
 
 	function dry(){
 		var html = '<div class="fucking-eu-cookies">'+
-	    '<span>%t <a href="%l">%m</a></span> '+
-	    '<button>%a</button>'+
+		'<span>%t <a href="%l">%m</a></span> '+
+		'<button>%a</button>'+
 		'</div>';
 		html = html
 			.replace('%t', fucking_eu_localizations.t)

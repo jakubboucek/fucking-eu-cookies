@@ -4,4 +4,3 @@ var fucking_eu_localizations = {
 	m:'Vice informací',
 	l:'https://www.google.com/intl/cs/policies/technologies/cookies/'
 };
-// @koala-append "cookies.js"
