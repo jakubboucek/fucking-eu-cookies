@@ -2,8 +2,12 @@
 	var includes = <%= JSON.stringify({
 				css: css
 			}) %>;
+
 	function init() {
-		console.log(d.readyState);
+		if(d.cookie.indexOf('fucking-eu-cookies') !== -1) {
+			return;
+		}
+
 		if ( d.readyState === 'complete' ) {
 			setTimeout( dry );
 		} else {
@@ -19,21 +23,32 @@
 	}
 
 	function dry(){
-		var html = '<div class="fucking-eu-cookies">'+
-		'<span>%t <a href="%l">%m</a></span> '+
-		'<button>%a</button>'+
-		'</div>';
+		var html = '<span>%t <a href="%l">%m</a></span> '+
+		'<button>%a</button>';
 		html = html
 			.replace('%t', fucking_eu_localizations.t)
 			.replace('%l', fucking_eu_localizations.l)
 			.replace('%m', fucking_eu_localizations.m)
 			.replace('%a', fucking_eu_localizations.a);
 		var body = d.body;
+		var head = d.head;
+		var style = document.createElement('style');
+		style.type = 'text/css';
+		style.appendChild(d.createTextNode(includes.css));
+
 		var div = d.createElement('div');
+		div.className = 'fucking-eu-cookies fucking-priority';
 		div.innerHTML = html;
+		head.appendChild(style);
 		body.insertBefore(div, body.firstChild);
+		div.getElementsByTagName('button')[0].addEventListener('click', function(){ consent( div ); });
+	}
+
+	function consent( div ) {
+		d.body.removeChild( div );
+
 		var date = new Date();
-		date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000));
+		date.setFullYear(date.getFullYear() + 1);
 		var expires = '; expires=' + date.toGMTString();
 		d.cookie = 'fucking-eu-cookies=1' + expires + '; path=/';
 	}

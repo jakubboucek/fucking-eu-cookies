@@ -15,8 +15,8 @@ module.exports = function(grunt) {
 		},
 		copy: {
 			styles: {
-				src: 'test.html',
-				dest: 'dist/'
+				src: 'index.html',
+				dest: 'build/'
 			},
 			script: {
 				src: 'source/cookies.js',
