@@ -1,6 +1,6 @@
 var fucking_eu_localizations = {
-	t:'This website uses cookies to ensure you get the best experience on our website.',
-	a:'Accept',
-	m:'More info',
+	t:'By using this site you agree to the use of cookies for analytics, personalised content and ads.',
+	a:'Got it',
+	m:'Learn more',
 	l:'https://www.google.com/policies/technologies/cookies/'
 };
