@@ -8,6 +8,11 @@
 			return;
 		}
 
+		if( !w.addEventListener ) {
+			//To keep things simple are old browsers unsupported
+			return;
+		}
+
 		if ( d.readyState === 'complete' ) {
 			setTimeout( dry );
 		} else {
