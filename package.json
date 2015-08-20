@@ -1,6 +1,12 @@
 {
   "name": "fucking-eu-cookies",
   "version": "0.1.1",
+  "author" : {
+    "name" : "Jakub Bouček",
+    "email" : "pan@jakubboucek.cz",
+    "url" : "https://jakub-boucek.cz/"
+  },
+  "license": "MIT",
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-contrib-concat": "^0.5.1",
