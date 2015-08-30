@@ -8,6 +8,11 @@
 			return;
 		}
 
+		if(navigator.CookiesOK) {
+			addCookie( 'auto-CookiesOK' );
+			return;
+		}
+
 		if( !w.addEventListener ) {
 			//To keep things simple are old browsers unsupported
 			return;
@@ -51,11 +56,17 @@
 
 	function consent( div ) {
 		d.body.removeChild( div );
+		addCookie();
+	}
 
+	function addCookie( reason ) {
+		if (typeof reason === 'undefined') {
+			reason = '1';
+		}
 		var date = new Date();
 		date.setFullYear(date.getFullYear() + 1);
 		var expires = '; expires=' + date.toGMTString();
-		d.cookie = 'fucking-eu-cookies=1' + expires + '; path=/';
+		d.cookie = 'fucking-eu-cookies=' + encodeURIComponent(reason) + expires + '; path=/';
 	}
 
 	init();
