@@ -30,6 +30,10 @@ module.exports = function(grunt) {
 			}
 		},
 		concat: {
+			sk: {
+				src: ['source/lang.sk.js','dist/cookies.js'],
+				dest: 'dist/sk.js',
+			},
 			cz: {
 				src: ['source/lang.cz.js','dist/cookies.js'],
 				dest: 'dist/cz.js',
@@ -45,6 +49,7 @@ module.exports = function(grunt) {
 			},
 			build: {
 				files: {
+					'build/sk.js': ['dist/sk.js'],
 					'build/cz.js': ['dist/cz.js'],
 					'build/en.js': ['dist/en.js']
 				}
