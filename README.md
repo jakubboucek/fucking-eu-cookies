@@ -43,14 +43,14 @@ $( document ).on( "click", ".fucking-eu-cookies a", function( e ) {
 ([ukázka](https://jsfiddle.net/Lzg0wmb1/))
 
 ## Obtěžování uživatele
-Uvědumuju si, že zasrané nařízení je zcela zbytečné a nesmyslné. Nedává mi proto smysl upozornění dělat obzvlášť výrazné a obtěžující. 
+Uvědumuju si, že zasrané nařízení je zcela zbytečné a nesmyslné. Nedává mi proto smysl upozornění dělat obzvlášť výrazné a obtěžující.
 Z toho důvodu je lišta:
 * psaná malým písmem,
 * v nevýrazných barvách (které jsou převzaty z barev systéových lišt),
 * nemá fixní pozici, aby se dala odrolovat pryč,
 * respektuje některé nejoblíbenější rozšíření pro blokování reklam a takovýchto EU hlášek (má se za to, že instalací nástroje na jejich blokování již uživatel vyjádřil globálně plošný souhlas a je náležitě informován).
 
-## Známé problémy 
+## Známé problémy
 Text splňuje zasrané požadavky zasrané EU s drobným nedostatkem, že cookies se pravděpodobně do počítače uživatele uloží dříve, než tento vyjádří souhlas, nebo než se s požadovanou informací seznámí. Lišta totiž **vytváření cookies neomezuje**, pouze zajišťuje informování uživatelů a získání jejich tichého souhlasu. Jednoduchost instalace je vykoupena právě tímto nedostatkem.
 
 Problémy zobrazení:
@@ -65,6 +65,10 @@ Připojovaný soubor má nastaveno velmi dlouhé cachování, aby tento soubor b
 
 ## Zabezpečení
 Knihovna je hostována na serverech Amazonu na službě [Simple storage service](https://aws.amazon.com/s3/), která vyniká vysokou dostupností a zabezpečením. Protože se jedná o script vkládaný do stránky, byla zvoleno toto řešení právě s ohledem na zabezpečení, které minimalizuje možnosti neautorizovaného přístupu k tomuto souboru.
+
+## Changelist
+### 0.1.3
+* Added slovak language (thanks to [OndroNR](https://github.com/OndroNR))
 
 ## Plánovaná podpora a vývoj
 U současné verze je plánován vývo **pouze** v tomto rozsahu (vše se zachováním zpětné kompatibility):
