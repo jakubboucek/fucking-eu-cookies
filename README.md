@@ -1,6 +1,6 @@
 # Fucking EU cookies
-One-file zasraná hláška pro zasranou EU, v jednom scriptu, 1kB, 1 request, TLS (SSL), asynchronní, hostováno na [S3](https://aws.amazon.com/s3/), bez
-závislosti na jQuery a navrženo se záměrem nejméně obtěžovat uživatele.
+One-file zasraná hláška pro zasranou EU, v jednom scriptu, 1kB, 1 request, TLS (SSL), asynchronní, hostováno
+na [S3](https://aws.amazon.com/s3/), bez závislosti na jQuery a navrženo se záměrem nejméně obtěžovat uživatele.
 
 *[EN] Sorry, this readme is currently possible only in Czech, because main target users are in CZ.*
 
@@ -17,8 +17,8 @@ Takto nainstalovaná knihovna má funkce:
 * po stisknutí tlačítka souhlasu uložení cookie, aby se lišta do dobu 1 roku již nezobrazila,
 * respektuje některá rozšíření pro automatické odsouhlasení.
 
-## Úpravy vzhledu a funkčnosti
-Vzhled lišty lze snadno upravit nastavením vlastností pro třídu `.fucking-eu-cookies`, abyste převážili výchozí nastavení, možná bude potřeba odkazovat se na  `.fucking-eu-cookies.fucking-priority`.
+## Úpravy vzhledu
+Vzhled lišty lze snadno upravit nastavením vlastností pro třídu `.fucking-eu-cookies`, abyste převážili výchozí nastavení, možná bude potřeba odkazovat se na `.fucking-eu-cookies.fucking-priority`.
 
 Příklad změny na fixní verzi – užitečné v situaci, kdy základní vzhled rozbíjí layout stránky:
 ```css
@@ -32,15 +32,42 @@ Příklad změny na fixní verzi – užitečné v situaci, kdy základní vzhle
 ```
 Obdobně můžete upravit i následující prvky: `.fucking-eu-cookies.fucking-priority span` pro text, `.fucking-eu-cookies.fucking-priority a` pro odkaz na *Více informací* a `.fucking-eu-cookies.fucking-priority button` pro tlačítko.
 
-Obdobně lze upravit funkci, například vynucení otevírání odkazu do nového okna (vyžaduje nejméně [jQuery v1.7](http://api.jquery.com/on/)):
-```js
-$( document ).on( "click", ".fucking-eu-cookies a", function( e ) {
-	if( window.open( this.href ) ) {
-		e.preventDefault();
-	}
-});
+## Úpravy funkčnosti
+Od verze [0.1.4](#014) lze lištu konfigurovat pomocí konfigurační proměnné `fucking_eu_config`. 
+
+### Změny textace
+Textaci lze konfigurovat parametrem `l18n`, tedy např. změna popisu tlačítka: 
+```html
+<script>
+	var fucking_eu_config = { 
+		"l18n": { 
+			"accept": "OK" 
+		} 
+	};
+</script>
 ```
-([ukázka](https://jsfiddle.net/Lzg0wmb1/))
+Takto lze přepsat všechny výchozí hodnoty ze souboru [source/l18n.cz.json](source/l18n.cz.json).
+
+### Nastavení chování
+Chování lze konfigurovat parametrem `options`, tedy např. zobrazování informací v novém okně: 
+```html
+<script>
+	var fucking_eu_config = { 
+		"options": { 
+			"popupMore": true 
+		} 
+	};
+</script>
+```
+Takto lze přepsat všechny výchozí hodnoty ze souboru [source/options.json](source/options.json).
+
+Tento kód uveďte před volání lišty, tedy např.:
+```html
+<script>
+	var fucking_eu_config = { … };
+</script>
+<script src="//s3-eu-west-1.amazonaws.com/fucking-eu-cookies/cz.js" async></script>
+```
 
 ## Obtěžování uživatele
 Uvědumuju si, že zasrané nařízení je zcela zbytečné a nesmyslné. Nedává mi proto smysl upozornění dělat obzvlášť výrazné a obtěžující.
@@ -67,8 +94,11 @@ Připojovaný soubor má nastaveno velmi dlouhé cachování, aby tento soubor b
 Knihovna je hostována na serverech Amazonu na službě [Simple storage service](https://aws.amazon.com/s3/), která vyniká vysokou dostupností a zabezpečením. Protože se jedná o script vkládaný do stránky, byla zvoleno toto řešení právě s ohledem na zabezpečení, které minimalizuje možnosti neautorizovaného přístupu k tomuto souboru.
 
 ## Changelist
+### 0.1.4
+* Přidána možnost konfigurace.
+
 ### 0.1.3
-* Added slovak language (thanks to [OndroNR](https://github.com/OndroNR))
+* Přidána slovenština (díky [OndroNR](https://github.com/OndroNR))
 
 ## Plánovaná podpora a vývoj
 U současné verze je plánován vývo **pouze** v tomto rozsahu (vše se zachováním zpětné kompatibility):
