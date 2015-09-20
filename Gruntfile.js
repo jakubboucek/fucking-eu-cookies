@@ -18,29 +18,41 @@ module.exports = function(grunt) {
 				src: 'index.html',
 				dest: 'build/'
 			},
-			script: {
+			cz: {
 				src: 'source/cookies.js',
-				dest: 'dist/cookies.js',
+				dest: 'dist/cz.js',
 				options: {
 					process: function(content, path) {
 						grunt.config.set('css', grunt.file.read('dist/style.css'));
+						grunt.config.set('l18n', grunt.file.readJSON('source/l18n.cz.json'));
+						grunt.config.set('options', grunt.file.readJSON('source/options.json'));
 						return grunt.template.process(content);
 					}
 				}
-			}
-		},
-		concat: {
-			sk: {
-				src: ['source/lang.sk.js','dist/cookies.js'],
-				dest: 'dist/sk.js',
-			},
-			cz: {
-				src: ['source/lang.cz.js','dist/cookies.js'],
-				dest: 'dist/cz.js',
 			},
 			en: {
-				src: ['source/lang.en.js','dist/cookies.js'],
+				src: 'source/cookies.js',
 				dest: 'dist/en.js',
+				options: {
+					process: function(content, path) {
+						grunt.config.set('css', grunt.file.read('dist/style.css'));
+						grunt.config.set('l18n', grunt.file.readJSON('source/l18n.en.json'));
+						grunt.config.set('options', grunt.file.readJSON('source/options.json'));
+						return grunt.template.process(content);
+					}
+				}
+			},
+			sk: {
+				src: 'source/cookies.js',
+				dest: 'dist/sk.js',
+				options: {
+					process: function(content, path) {
+						grunt.config.set('css', grunt.file.read('dist/style.css'));
+						grunt.config.set('l18n', grunt.file.readJSON('source/l18n.sk.json'));
+						grunt.config.set('options', grunt.file.readJSON('source/options.json'));
+						return grunt.template.process(content);
+					}
+				}
 			}
 		},
 		uglify: {
@@ -49,9 +61,9 @@ module.exports = function(grunt) {
 			},
 			build: {
 				files: {
-					'build/sk.js': ['dist/sk.js'],
 					'build/cz.js': ['dist/cz.js'],
-					'build/en.js': ['dist/en.js']
+					'build/en.js': ['dist/en.js'],
+					'build/sk.js': ['dist/sk.js']
 				}
 			}
 		},
@@ -59,11 +71,10 @@ module.exports = function(grunt) {
 
 	// Load the plugin that provides the "uglify" task.
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-less');
 
 	// Default task(s).
-	grunt.registerTask('default', ['less','copy','concat','uglify']);
+	grunt.registerTask('default', ['less','copy','uglify']);
 
 };
