@@ -139,9 +139,9 @@ Knihovna je hostována na serverech Amazonu na službě [Simple storage service]
 ## Plánovaná podpora a vývoj
 U současné verze je plánován vývo **pouze** v tomto rozsahu (vše se zachováním zpětné kompatibility):
 * opravy a vylepšení kompatibility,
-* doplnění podpory customizace textace,
+* ~~doplnění podpory customizace textace~~ (od verze 0.1.4),
 * podpora více nástrojů na automatické potlačování otravných prvků na webu (nejčstěji rozšíření do browseru),
-* podpora [GTM](https://tagmanager.google.com) pro zachytávání eventů do Analytics.
+* ~~podpora [GTM](https://tagmanager.google.com) pro zachytávání eventů do Analytics~~ (od verze 0.1.5).
 
 ## Poděkování
 * [Davidovi Grudlovi](https://davidgrudl.com/) za nakopnutí článkem [Jak na souhlas s cookie ve zkurvené EU](https://phpfashion.com/jak-na-souhlas-s-cookie-ve-zkurvene-eu),
