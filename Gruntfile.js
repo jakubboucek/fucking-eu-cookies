@@ -18,6 +18,12 @@ module.exports = function(grunt) {
 				src: 'index.html',
 				dest: 'build/'
 			},
+			icons: {
+				expand: true,
+				flatten: true,
+				src: 'source/img/*',
+				dest: 'build/img/'
+			},
 			cz: {
 				src: 'source/cookies.js',
 				dest: 'dist/cz.js',
