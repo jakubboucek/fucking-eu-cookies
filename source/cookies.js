@@ -1,6 +1,10 @@
 (function(w, d){
-	var cookieName = 'fucking-eu-cookies';
+	var identificator = 'fucking-eu-cookies';
 	var userVariable = 'fucking_eu_config';
+	var noShowEvent = 'no-show';
+	var showEvent = 'show';
+	var hideEvent = 'hide';
+	var consentReason = 'consent';
 
 	var includes = <%= JSON.stringify({
 				css: css,
@@ -11,22 +15,29 @@
 	var config = {};
 
 	function init() {
-		if(d.cookie.indexOf(cookieName) !== -1) {
+		w[userVariable] = w[userVariable] || {};
+		config = buildConfig(includes, w[userVariable]);
+
+		invokeEvent('init');
+
+		if(d.cookie.indexOf(identificator) !== -1) {
+			invokeEvent(noShowEvent, consentReason);
 			return;
 		}
 
 		if(navigator.CookiesOK) {
 			addCookie( 'auto-CookiesOK' );
+			invokeEvent(noShowEvent, 'plugin CookieOK');
 			return;
 		}
 
 		if( !w.addEventListener ) {
 			//To keep things simple are old browsers unsupported
+			invokeEvent(noShowEvent, 'unsupported browser');
 			return;
 		}
 
-		w[userVariable] = w[userVariable] || {};
-		config = buildConfig(includes, w[userVariable]);
+
 
 		if ( d.readyState === 'complete' ) {
 			setTimeout( dry );
@@ -43,6 +54,8 @@
 	}
 
 	function dry(){
+		invokeEvent(showEvent);
+
 		var html = '<span>%t <a href="%l">%m</a></span> '+
 		'<button>%a</button>';
 		html = html
@@ -57,13 +70,15 @@
 		style.appendChild(d.createTextNode(includes.css));
 
 		var div = d.createElement('div');
-		div.className = cookieName + ' fucking-priority';
+		div.className = identificator + ' fucking-priority';
 		div.innerHTML = html;
 		head.appendChild(style);
 		body.insertBefore(div, body.firstChild);
 		div.getElementsByTagName('button')[0].addEventListener('click', function(){ consent( div ); });
+		var a = div.getElementsByTagName('a')[0];
+		a.addEventListener('click', function(){ invokeEvent('open-more'); });
 		if(config.options.popupMore) {
-			div.getElementsByTagName('a')[0].setAttribute('target', '_blank');
+			a.setAttribute('target', '_blank');
 		}
 	}
 
@@ -83,8 +98,23 @@
 		return config;
 	}
 
+	function invokeEvent( action, label ) {
+		if (typeof(config.options.callback) === 'function') {
+			config.options.callback( action, label );
+		}
+		var dataLayer = config.options.dataLayerName;
+		if (dataLayer && w[dataLayer] && typeof(w[dataLayer].push) === 'function') {
+			w[dataLayer].push({
+				'event': identificator,
+				'action': action,
+				'label': label
+			});
+		}
+	}
+
 	function consent( div ) {
 		d.body.removeChild( div );
+		invokeEvent(hideEvent, consentReason);
 		addCookie();
 	}
 
@@ -95,7 +125,7 @@
 		var date = new Date();
 		date.setFullYear(date.getFullYear() + 1);
 		var expires = '; expires=' + date.toGMTString();
-		d.cookie = cookieName + '=' + encodeURIComponent(reason) + expires + '; path=/';
+		d.cookie = identificator + '=' + encodeURIComponent(reason) + expires + '; path=/';
 	}
 
 	init();

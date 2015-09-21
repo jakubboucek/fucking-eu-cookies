@@ -1,6 +1,6 @@
 # Fucking EU cookies
-One-file zasraná hláška pro zasranou EU, v jednom scriptu, 1kB, 1 request, TLS (SSL), asynchronní, hostováno
-na [S3](https://aws.amazon.com/s3/), bez závislosti na jQuery a navrženo se záměrem nejméně obtěžovat uživatele.
+One-file zasraná hláška pro zasranou EU, v jednom scriptu, 1,5 kB, 1 request, TLS (SSL), asynchronní, hostováno
+na [S3](https://aws.amazon.com/s3/), bez závislosti na jQuery, s podporou Tag manageru a navrženo se záměrem nejméně obtěžovat uživatele.
 
 *[EN] Sorry, this readme is currently possible only in Czech, because main target users are in CZ.*
 
@@ -61,7 +61,40 @@ Chování lze konfigurovat parametrem `options`, tedy např. zobrazování infor
 ```
 Takto lze přepsat všechny výchozí hodnoty ze souboru [source/options.json](source/options.json).
 
-Tento kód uveďte před volání lišty, tedy např.:
+#### Callback a propojení s Google Tag Manager
+Od verze 0.1.5 lze pomocí parametrů `callback` a `dataLayerName` sledovat události lišty. Callback se hodí zejména pro sladění složitějšího designu stránky (když, např. zobrazená lišta překrývá stránku), dataLayer pak posílá eventy pro měření uživatelského chování. Obě funkce jsou na sobě nezávislé, lze použít jednu z nich a nebo obě. Nicméně obě dostávají stejná data.
+
+Callback předává dva parametry, `action` s názvem události (možné hodnoty: `'init'`,`'show'`,`'no-show'`,`'hide'`) a `label` s dalšími informacemi (např.: důvod nezobrazení lišty u akce `'no-show'`). Příklad:
+
+```html
+<script>
+	function myCallback( action, label ) {
+		console.log(action, label);
+		// Example output: 'no-show', 'unsupported browser'
+	}
+	var fucking_eu_config = { 
+		"options": { 
+			"callback": myCallback 
+		} 
+	};
+</script>
+```
+
+Do Google Tag Manageru pak provolává event nazvaný `fucking-eu-cookies` se stejnými parametry jako Callback. Příklad:
+```html
+<script>
+	var dataLayer = [];
+	var fucking_eu_config = { 
+		"options": { 
+			"dataLayerName": 'dataLayer' // Note: input variable name (in 'quotes'), no variable directly
+		} 
+	};
+	// Example event values: {event: 'fucking-eu-cookies', action: 'no-show', label: 'unsupported browser'}
+</script>
+```
+Více o použití proměnné `dataLayer` v GTM najdete v [dokumentaci](https://developers.google.com/tag-manager/devguide?hl=en#events) a nebo v článku [Variable Guide](http://www.simoahava.com/analytics/variable-guide-google-tag-manager/).
+
+Tento kód uveďte vždy před volání lišty, tedy např.:
 ```html
 <script>
 	var fucking_eu_config = { … };
@@ -94,6 +127,9 @@ Připojovaný soubor má nastaveno velmi dlouhé cachování, aby tento soubor b
 Knihovna je hostována na serverech Amazonu na službě [Simple storage service](https://aws.amazon.com/s3/), která vyniká vysokou dostupností a zabezpečením. Protože se jedná o script vkládaný do stránky, byla zvoleno toto řešení právě s ohledem na zabezpečení, které minimalizuje možnosti neautorizovaného přístupu k tomuto souboru.
 
 ## Changelist
+### 0.1.5
+* Přidána možnost volání callbacku a propojení s Google Tag Managerem.
+
 ### 0.1.4
 * Přidána možnost konfigurace.
 
