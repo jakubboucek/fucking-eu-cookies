@@ -127,6 +127,9 @@ Připojovaný soubor má nastaveno velmi dlouhé cachování, aby tento soubor b
 Knihovna je hostována na serverech Amazonu na službě [Simple storage service](https://aws.amazon.com/s3/), která vyniká vysokou dostupností a zabezpečením. Protože se jedná o script vkládaný do stránky, byla zvoleno toto řešení právě s ohledem na zabezpečení, které minimalizuje možnosti neautorizovaného přístupu k tomuto souboru.
 
 ## Changelist
+### 0.1.6
+* Oprava překlepu ve slovenštině
+
 ### 0.1.5
 * Přidána možnost volání callbacku a propojení s Google Tag Managerem.
 
