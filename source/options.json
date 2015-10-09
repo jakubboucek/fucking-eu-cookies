@@ -1,5 +1,6 @@
 {
 	"popupMore": false,
 	"callback": null,
-	"dataLayerName": null
+	"dataLayerName": null,
+	"append" : false
 }

@@ -13,6 +13,7 @@
 			}, null, '\t') %>;
 
 	var config = {};
+        
 
 	function init() {
 		w[userVariable] = w[userVariable] || {};
@@ -73,7 +74,11 @@
 		div.className = identificator + ' fucking-priority';
 		div.innerHTML = html;
 		head.appendChild(style);
-		body.insertBefore(div, body.firstChild);
+        if (includes.options.append) {
+            $(body).append(div);
+        } else {
+            body.insertBefore(div, body.firstChild);
+        }
 		div.getElementsByTagName('button')[0].addEventListener('click', function(){ consent( div ); });
 		var a = div.getElementsByTagName('a')[0];
 		a.addEventListener('click', function(){ invokeEvent('open-more'); });
