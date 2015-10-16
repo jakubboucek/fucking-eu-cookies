@@ -5,6 +5,10 @@
 	var showEvent = 'show';
 	var hideEvent = 'hide';
 	var consentReason = 'consent';
+	var cookiesOK = 'CookiesOK';
+	var DOMContentLoaded = 'DOMContentLoaded';
+	var load = 'load';
+	var click = 'click';
 
 	var includes = <%= JSON.stringify({
 				version: pkg.version,
@@ -26,9 +30,9 @@
 			return;
 		}
 
-		if(navigator.CookiesOK) {
-			addCookie( 'auto-CookiesOK' );
-			invokeEvent(noShowEvent, 'plugin CookieOK');
+		if(navigator[cookiesOK]) {
+			addCookie( 'auto-'+cookiesOK );
+			invokeEvent(noShowEvent, 'plugin '+cookiesOK);
 			return;
 		}
 
@@ -43,14 +47,14 @@
 		if ( d.readyState === 'complete' ) {
 			setTimeout( dry );
 		} else {
-			d.addEventListener( 'DOMContentLoaded', completed, false );
-			w.addEventListener( 'load', completed, false );
+			d.addEventListener( DOMContentLoaded, completed, false );
+			w.addEventListener( load, completed, false );
 		}
 	};
 
 	function completed() {
-		d.removeEventListener( 'DOMContentLoaded', completed, false );
-		w.removeEventListener( 'load', completed, false );
+		d.removeEventListener( DOMContentLoaded, completed, false );
+		w.removeEventListener( load, completed, false );
 		dry();
 	}
 
@@ -83,9 +87,9 @@
         } else if (targetElement = document.getElementById(insertTo)) {
             targetElement.insertBefore(div, null);
         }
-		div.getElementsByTagName('button')[0].addEventListener('click', function(){ consent( div ); });
+		div.getElementsByTagName('button')[0].addEventListener(click, function(){ consent( div ); });
 		var a = div.getElementsByTagName('a')[0];
-		a.addEventListener('click', function(){ invokeEvent('open-more'); });
+		a.addEventListener(click, function(){ invokeEvent('open-more'); });
 		if(config.options.popupMore) {
 			a.setAttribute('target', '_blank');
 		}
