@@ -33,38 +33,53 @@ Příklad změny na fixní verzi – užitečné v situaci, kdy základní vzhle
 Obdobně můžete upravit i následující prvky: `.fucking-eu-cookies.fucking-priority span` pro text, `.fucking-eu-cookies.fucking-priority a` pro odkaz na *Více informací* a `.fucking-eu-cookies.fucking-priority button` pro tlačítko.
 
 ## Úpravy funkčnosti
-Od verze [0.1.4](#014) lze lištu konfigurovat pomocí konfigurační proměnné `fucking_eu_config`. 
+Lištu lze konfigurovat pomocí konfigurační proměnné `fucking_eu_config`.
 
 ### Změny textace
-Textaci lze konfigurovat parametrem `l18n`, tedy např. změna popisu tlačítka: 
+Textaci lze konfigurovat parametrem `l18n`, tedy např. změna popisu tlačítka:
 ```html
 <script>
-	var fucking_eu_config = { 
-		"l18n": { 
-			"accept": "OK" 
-		} 
+	var fucking_eu_config = {
+		"l18n": {
+			"accept": "OK"
+		}
 	};
 </script>
 ```
 Takto lze přepsat všechny výchozí hodnoty ze souboru [source/l18n.cz.json](source/l18n.cz.json).
 
 ### Nastavení chování
-Chování lze konfigurovat parametrem `options`, tedy např. zobrazování informací v novém okně: 
+Chování lze konfigurovat parametrem `options`, tedy např. zobrazování informací v novém okně:
 ```html
 <script>
-	var fucking_eu_config = { 
-		"options": { 
-			"popupMore": true 
-		} 
+	var fucking_eu_config = {
+		"options": {
+			"popupMore": true
+		}
 	};
 </script>
 ```
 Takto lze přepsat všechny výchozí hodnoty ze souboru [source/options.json](source/options.json).
 
-#### Callback a propojení s Google Tag Manager
-Od verze 0.1.5 lze pomocí parametrů `callback` a `dataLayerName` sledovat události lišty. Callback se hodí zejména pro sladění složitějšího designu stránky (když, např. zobrazená lišta překrývá stránku), dataLayer pak posílá eventy pro měření uživatelského chování. Obě funkce jsou na sobě nezávislé, lze použít jednu z nich a nebo obě. Nicméně obě dostávají stejná data.
+#### Umístění lišty v kódu
+Ve výchozím nastavení se lišta vykresluje na na začátek stránky (jako první potomek `<body>`), parametrem `insertTo` lze upravit toto chování. Pokud hodnotu nastavíte na `'body-begin'` nebo `'body-end'`, vloží se lišta na začátek/konec stránky. Pokud zadáte jinou hodnotu, zkusí se najít takový element podle `id` a vloží lištu na jeho konec.  
+**Upozornění:** Pokud nebude element s daným ID v DOM stránky nalezen, lišta se nezobrazí, ale nezobrazí se žádné varování.
+```html
+<script>
+	var fucking_eu_config = {
+		"options": {
+			"insertTo": "myPlaceForCookie"
+		}
+	};
+</script>
+…
+<dic id="myPlaceForCookie"><!-- Panel will be place here --></a>
+```
 
-Callback předává dva parametry, `action` s názvem události (možné hodnoty: `'init'`,`'show'`,`'no-show'`,`'hide'`) a `label` s dalšími informacemi (např.: důvod nezobrazení lišty u akce `'no-show'`). Příklad:
+#### Callback a propojení s Google Tag Manager
+Pomocí parametrů `callback` a `dataLayerName` lze sledovat události lišty. Callback se hodí zejména pro sladění složitějšího designu stránky (když, např. zobrazená lišta překrývá stránku), dataLayer pak posílá eventy pro měření uživatelského chování. Obě funkce jsou na sobě nezávislé, lze použít jednu z nich a nebo obě. Nicméně obě dostávají stejná data.
+
+Callback předává dva parametry, `action` s názvem události (možné hodnoty: `'init'`,`'show'`,`'no-show'`,`'hide'` a `'open-more'`) a `label` s dalšími informacemi (např.: důvod nezobrazení lišty u akce `'no-show'`). Příklad:
 
 ```html
 <script>
@@ -72,10 +87,10 @@ Callback předává dva parametry, `action` s názvem události (možné hodnoty
 		console.log(action, label);
 		// Example output: 'no-show', 'unsupported browser'
 	}
-	var fucking_eu_config = { 
-		"options": { 
-			"callback": myCallback 
-		} 
+	var fucking_eu_config = {
+		"options": {
+			"callback": myCallback
+		}
 	};
 </script>
 ```
@@ -84,10 +99,10 @@ Do Google Tag Manageru pak provolává event nazvaný `fucking-eu-cookies` se st
 ```html
 <script>
 	var dataLayer = [];
-	var fucking_eu_config = { 
-		"options": { 
+	var fucking_eu_config = {
+		"options": {
 			"dataLayerName": 'dataLayer' // Note: input variable name (in 'quotes'), no variable directly
-		} 
+		}
 	};
 	// Example event values: {event: 'fucking-eu-cookies', action: 'no-show', label: 'unsupported browser'}
 </script>
@@ -127,24 +142,7 @@ Připojovaný soubor má nastaveno velmi dlouhé cachování, aby tento soubor b
 Knihovna je hostována na serverech Amazonu na službě [Simple storage service](https://aws.amazon.com/s3/), která vyniká vysokou dostupností a zabezpečením. Protože se jedná o script vkládaný do stránky, byla zvoleno toto řešení právě s ohledem na zabezpečení, které minimalizuje možnosti neautorizovaného přístupu k tomuto souboru.
 
 ## Changelist
-### 0.1.6
-* Oprava překlepu ve slovenštině
-
-### 0.1.5
-* Přidána možnost volání callbacku a propojení s Google Tag Managerem.
-
-### 0.1.4
-* Přidána možnost konfigurace.
-
-### 0.1.3
-* Přidána slovenština (díky [OndroNR](https://github.com/OndroNR))
-
-## Plánovaná podpora a vývoj
-U současné verze je plánován vývo **pouze** v tomto rozsahu (vše se zachováním zpětné kompatibility):
-* opravy a vylepšení kompatibility,
-* ~~doplnění podpory customizace textace~~ (od verze 0.1.4),
-* podpora více nástrojů na automatické potlačování otravných prvků na webu (nejčstěji rozšíření do browseru),
-* ~~podpora [GTM](https://tagmanager.google.com) pro zachytávání eventů do Analytics~~ (od verze 0.1.5).
+Look here: https://github.com/jakubboucek/fucking-eu-cookies/releases
 
 ## Poděkování
 * [Davidovi Grudlovi](https://davidgrudl.com/) za nakopnutí článkem [Jak na souhlas s cookie ve zkurvené EU](https://phpfashion.com/jak-na-souhlas-s-cookie-ve-zkurvene-eu),
