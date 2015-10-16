@@ -7,6 +7,7 @@
 	var consentReason = 'consent';
 
 	var includes = <%= JSON.stringify({
+				version: pkg.version,
 				css: css,
 				l18n: l18n,
 				options: options
@@ -18,7 +19,7 @@
 		w[userVariable] = w[userVariable] || {};
 		config = buildConfig(includes, w[userVariable]);
 
-		invokeEvent('init');
+		invokeEvent('init', includes.version);
 
 		if(d.cookie.indexOf(identificator) !== -1) {
 			invokeEvent(noShowEvent, consentReason);
