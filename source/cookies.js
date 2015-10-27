@@ -80,13 +80,13 @@
 		head.appendChild(style);
 		var insertTo = config.options.insertTo;
 		var targetElement;
-        if (insertTo == 'body-begin') {
-            body.insertBefore(div, body.firstChild);
-        } else if (insertTo == 'body-end') {
-            body.insertBefore(div, null);
-        } else if (targetElement = document.getElementById(insertTo)) {
-            targetElement.insertBefore(div, null);
-        }
+		if (insertTo == 'body-begin') {
+			body.insertBefore(div, body.firstChild);
+		} else if (insertTo == 'body-end') {
+			body.insertBefore(div, null);
+		} else if (targetElement = document.getElementById(insertTo)) {
+			targetElement.insertBefore(div, null);
+		}
 		div.getElementsByTagName('button')[0].addEventListener(click, function(){ consent( div ); });
 		var a = div.getElementsByTagName('a')[0];
 		a.addEventListener(click, function(){ invokeEvent('open-more'); });
