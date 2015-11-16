@@ -9,12 +9,12 @@ Pro nainstalování tohoto rozšíření stačí do stránky vložit následují
 ```html
 <script src="//s3-eu-west-1.amazonaws.com/fucking-eu-cookies/cz.js" async></script>
 ```
-Kód můžete vložit kamkoliv do stránky, ale nelépe někam mezi `<head>` a `</head>`.
+Kód můžete vložit kamkoliv do stránky, ale nejlépe někam mezi `<head>` a `</head>`.
 
 Takto nainstalovaná knihovna má funkce:
 * zobrazení lišty v horní části stránky,
 * poučení uživatele o ukládání cookies, jak zasraná EU káže,
-* po stisknutí tlačítka souhlasu uložení cookie, aby se lišta do dobu 1 roku již nezobrazila,
+* po stisknutí tlačítka souhlasu uložení cookie, aby se lišta po dobu 1 roku již nezobrazila,
 * respektuje některá rozšíření pro automatické odsouhlasení.
 
 ## Úpravy vzhledu
@@ -109,7 +109,7 @@ Do Google Tag Manageru pak provolává event nazvaný `fucking-eu-cookies` se st
 ```
 Více o použití proměnné `dataLayer` v GTM najdete v [dokumentaci](https://developers.google.com/tag-manager/devguide?hl=en#events) a nebo v článku [Variable Guide](http://www.simoahava.com/analytics/variable-guide-google-tag-manager/).
 
-Tento kód uveďte vždy před volání lišty, tedy např.:
+Tento kód uveďte vždy před voláním lišty, tedy např.:
 ```html
 <script>
 	var fucking_eu_config = { … };
@@ -121,7 +121,7 @@ Tento kód uveďte vždy před volání lišty, tedy např.:
 Uvědumuju si, že zasrané nařízení je zcela zbytečné a nesmyslné. Nedává mi proto smysl upozornění dělat obzvlášť výrazné a obtěžující.
 Z toho důvodu je lišta:
 * psaná malým písmem,
-* v nevýrazných barvách (které jsou převzaty z barev systéových lišt),
+* v nevýrazných barvách (které jsou převzaty z barev systémových lišt),
 * nemá fixní pozici, aby se dala odrolovat pryč,
 * respektuje některé nejoblíbenější rozšíření pro blokování reklam a takovýchto EU hlášek (má se za to, že instalací nástroje na jejich blokování již uživatel vyjádřil globálně plošný souhlas a je náležitě informován).
 
@@ -130,11 +130,11 @@ Text splňuje zasrané požadavky zasrané EU s drobným nedostatkem, že cookie
 
 Problémy zobrazení:
 * Na webech s obrázkem na pozadí stránky, které je pozicované vůči prvkům ve stránce, může lišta způsobit rozpad layoutu.
-* Na webech s nenulovým marginem/paddingem stránky, ve kterém ale design do krajů zasahuje, může lišta způsobit vypadat hodně ošklivě.
+* Na webech s nenulovým marginem/paddingem stránky, ve kterém ale design do krajů zasahuje, může lišta vypadat hodně ošklivě.
 V obou případech pak doporučuji ve stránce doplnit stylopis, který lištu změni na fixně pozicovanou.
 
 Podpora browserů počítá pouze s moderními browsery. V zastaralých verzích se může lišta zobrazit nesprávně a nebo může zcela chybět.
-Záleží mi na tom, aby se ani ve starších verzích nic nerozbilo. Pokud se lišta zobrazila opravdu chybně, prosím o na hlášení.
+Záleží mi na tom, aby se ani ve starších verzích nic nerozbilo. Pokud se lišta zobrazila opravdu chybně, prosím o nahlášení.
 
 Připojovaný soubor má nastaveno velmi dlouhé cachování, aby tento soubor byl v koncových stanicích ukládán co nejdéle. Výhodou je velmi rychlé načítání. Nevýhodou je poměrně velký rozptyl verzí, které mohou mít v jednom okamžiku uživatelé na počítači. Při modifikacích a ovládání lišty dbejte na doporučení v návodech, které zohledňují zpětnou kompatibilitu.
 
