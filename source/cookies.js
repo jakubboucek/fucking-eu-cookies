@@ -126,7 +126,7 @@
 	}
 
 	function consent( div ) {
-		d.body.removeChild( div );
+		div.parentNode.removeChild( div );
 		invokeEvent(hideEvent, consentReason);
 		addCookie();
 	}
