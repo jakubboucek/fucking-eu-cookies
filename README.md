@@ -1,4 +1,6 @@
 # Fucking EU cookies
+
+[![Join the chat at https://gitter.im/jakubboucek/fucking-eu-cookies](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jakubboucek/fucking-eu-cookies?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 One-file zasraná hláška pro zasranou EU, v jednom scriptu, 1,5 kB, 1 request, TLS (SSL), asynchronní, hostováno
 na [S3](https://aws.amazon.com/s3/), CDN před [CloudFront](https://aws.amazon.com/cloudfront/), bez závislosti na jQuery, s podporou Tag manageru a navrženo se záměrem nejméně obtěžovat uživatele.
 
