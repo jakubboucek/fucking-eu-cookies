@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 			},
 			cz: {
 				src: 'source/cookies.js',
-				dest: 'dist/cz.js',
+				dest: 'dist/fucking-eu-cookies-cz.js',
 				options: {
 					process: function(content, path) {
 						grunt.config.set('css', grunt.file.read('dist/style.css'));
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
 			},
 			en: {
 				src: 'source/cookies.js',
-				dest: 'dist/en.js',
+				dest: 'dist/fucking-eu-cookies-en.js',
 				options: {
 					process: function(content, path) {
 						grunt.config.set('css', grunt.file.read('dist/style.css'));
@@ -44,7 +44,7 @@ module.exports = function(grunt) {
 			},
 			sk: {
 				src: 'source/cookies.js',
-				dest: 'dist/sk.js',
+				dest: 'dist/fucking-eu-cookies-sk.js',
 				options: {
 					process: function(content, path) {
 						grunt.config.set('css', grunt.file.read('dist/style.css'));
@@ -61,9 +61,9 @@ module.exports = function(grunt) {
 			},
 			build: {
 				files: {
-					'build/cz.js': ['dist/cz.js'],
-					'build/en.js': ['dist/en.js'],
-					'build/sk.js': ['dist/sk.js']
+					'build/fucking-eu-cookies-cz.js': ['dist/fucking-eu-cookies-cz.js'],
+					'build/fucking-eu-cookies-en.js': ['dist/fucking-eu-cookies-en.js'],
+					'build/fucking-eu-cookies-sk.js': ['dist/fucking-eu-cookies-sk.js']
 				}
 			}
 		},
