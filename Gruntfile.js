@@ -14,10 +14,6 @@ module.exports = function(grunt) {
 			},
 		},
 		copy: {
-			styles: {
-				src: 'index.html',
-				dest: 'build/'
-			},
 			cz: {
 				src: 'source/cookies.js',
 				dest: 'build/fucking-eu-cookies-cz.js',
