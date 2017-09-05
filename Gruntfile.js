@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 			},
 			main: {
 				files: {
-					"dist/style.css": "source/style.less"
+					"build/style.css": "source/style.less"
 				}
 			},
 		},
@@ -20,10 +20,10 @@ module.exports = function(grunt) {
 			},
 			cz: {
 				src: 'source/cookies.js',
-				dest: 'dist/fucking-eu-cookies-cz.js',
+				dest: 'build/fucking-eu-cookies-cz.js',
 				options: {
 					process: function(content, path) {
-						grunt.config.set('css', grunt.file.read('dist/style.css'));
+						grunt.config.set('css', grunt.file.read('build/style.css'));
 						grunt.config.set('l18n', grunt.file.readJSON('source/l18n.cz.json'));
 						grunt.config.set('options', grunt.file.readJSON('source/options.json'));
 						return grunt.template.process(content);
@@ -32,10 +32,10 @@ module.exports = function(grunt) {
 			},
 			en: {
 				src: 'source/cookies.js',
-				dest: 'dist/fucking-eu-cookies-en.js',
+				dest: 'build/fucking-eu-cookies-en.js',
 				options: {
 					process: function(content, path) {
-						grunt.config.set('css', grunt.file.read('dist/style.css'));
+						grunt.config.set('css', grunt.file.read('build/style.css'));
 						grunt.config.set('l18n', grunt.file.readJSON('source/l18n.en.json'));
 						grunt.config.set('options', grunt.file.readJSON('source/options.json'));
 						return grunt.template.process(content);
@@ -44,10 +44,10 @@ module.exports = function(grunt) {
 			},
 			sk: {
 				src: 'source/cookies.js',
-				dest: 'dist/fucking-eu-cookies-sk.js',
+				dest: 'build/fucking-eu-cookies-sk.js',
 				options: {
 					process: function(content, path) {
-						grunt.config.set('css', grunt.file.read('dist/style.css'));
+						grunt.config.set('css', grunt.file.read('build/style.css'));
 						grunt.config.set('l18n', grunt.file.readJSON('source/l18n.sk.json'));
 						grunt.config.set('options', grunt.file.readJSON('source/options.json'));
 						return grunt.template.process(content);
@@ -61,9 +61,9 @@ module.exports = function(grunt) {
 			},
 			build: {
 				files: {
-					'build/fucking-eu-cookies-cz.js': ['dist/fucking-eu-cookies-cz.js'],
-					'build/fucking-eu-cookies-en.js': ['dist/fucking-eu-cookies-en.js'],
-					'build/fucking-eu-cookies-sk.js': ['dist/fucking-eu-cookies-sk.js']
+					'dist/fucking-eu-cookies-cz-min.js': ['build/fucking-eu-cookies-cz.js'],
+					'dist/fucking-eu-cookies-en-min.js': ['build/fucking-eu-cookies-en.js'],
+					'dist/fucking-eu-cookies-sk-min.js': ['build/fucking-eu-cookies-sk.js']
 				}
 			}
 		},
