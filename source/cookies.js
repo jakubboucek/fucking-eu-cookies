@@ -92,6 +92,7 @@
 		a.addEventListener(click, function(){ invokeEvent('open-more'); });
 		if(config.options.popupMore) {
 			a.setAttribute('target', '_blank');
+			a.setAttribute('rel', 'noopener noreferrer');
 		}
 	}
 
