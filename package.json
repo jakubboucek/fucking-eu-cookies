@@ -1,10 +1,10 @@
 {
   "name": "fucking-eu-cookies",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "author" : {
     "name" : "Jakub Bouček",
     "email" : "pan@jakubboucek.cz",
-    "url" : "https://jakub-boucek.cz/"
+    "url" : "https://www.jakub-boucek.cz/"
   },
   "license": "MIT",
   "devDependencies": {
