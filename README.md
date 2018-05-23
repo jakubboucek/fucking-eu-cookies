@@ -4,10 +4,17 @@ na [S3](https://aws.amazon.com/s3/), CDN před [CloudFront](https://aws.amazon.c
 
 *[EN] Sorry, this readme is currently possible only in Czech, because main target users are in CZ.*
 
+## Ukončený projekt
+Tato lišta byla ukončena, nevyvíjí se, není jí poskytována podpora a bude smazána z hostingu.  
+[Více informací k ukončení](https://github.com/jakubboucek/fucking-eu-cookies/issues/14#issue-325497314)
+
+## Stažení
+Stahněte si lištu z [její poslední funkční verze](https://github.com/jakubboucek/fucking-eu-cookies/releases/tag/v0.1.10).
+
 ## Instalace
-Pro nainstalování tohoto rozšíření stačí do stránky vložit následující kód:
+Pro nainstalování tohoto rozšíření stačí do stránky vložit následující kód (URL si upravte podle vašeho webu):
 ```html
-<script src="//d2z9iq901qkqk8.cloudfront.net/cz.js" async></script>
+<script src="path/to/cz.js" async></script>
 ```
 Kód můžete vložit kamkoliv do stránky, ale nejlépe někam mezi `<head>` a `</head>`.
 
@@ -114,7 +121,7 @@ Tento kód uveďte vždy před voláním lišty, tedy např.:
 <script>
 	var fucking_eu_config = { … };
 </script>
-<script src="//d2z9iq901qkqk8.cloudfront.net/cz.js" async></script>
+<script src="path/to/cz.js" async></script>
 ```
 
 ## Obtěžování uživatele
