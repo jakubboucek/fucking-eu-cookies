@@ -1,5 +1,6 @@
 (function(w, d){
 	var identificator = 'fucking-eu-cookies';
+	var cookieIdentificator = 'fucking-eu-cookies-deprecated';
 	var userVariable = 'fucking_eu_config';
 	var noShowEvent = 'no-show';
 	var showEvent = 'show';
@@ -25,7 +26,7 @@
 
 		invokeEvent('init', includes.version);
 
-		if(d.cookie.indexOf(identificator) !== -1) {
+		if(d.cookie.indexOf(cookieIdentificator) !== -1) {
 			invokeEvent(noShowEvent, consentReason);
 			return;
 		}
@@ -137,9 +138,9 @@
 			reason = '1';
 		}
 		var date = new Date();
-		date.setFullYear(date.getFullYear() + 1);
+		date.setFullYear(date.getHours() + 1);
 		var expires = '; expires=' + date.toGMTString();
-		d.cookie = identificator + '=' + encodeURIComponent(reason) + expires + '; path=/';
+		d.cookie = cookieIdentificator + '=' + encodeURIComponent(reason) + expires + '; path=/';
 	}
 
 	init();
