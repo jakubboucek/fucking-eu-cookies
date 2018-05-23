@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 		},
 		copy: {
 			styles: {
-				src: 'index.html',
+				src: ['index.html', 'triangle.svg'],
 				dest: 'build/'
 			},
 			cz: {
