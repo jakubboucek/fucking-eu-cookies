@@ -1,7 +1,7 @@
 (function(w, d){
 	var identificator = 'fucking-eu-cookies';
 	var cookieIdentificator = 'fucking-eu-cookies-deprecated';
-	var triangleUrl = 'https://d2z9iq901qkqk8.cloudfront.net/triangle.svg';
+	var triangleUrl = 'https://d2z9iq901qkqk8.cloudfront.net/triangle-red.svg';
 	var userVariable = 'fucking_eu_config';
 	var noShowEvent = 'no-show';
 	var showEvent = 'show';
@@ -148,6 +148,13 @@
 		d.cookie = cookieIdentificator + '=' + encodeURIComponent(reason) + expires + '; path=/';
 	}
 
+	function deprecationAlert() {
+		if (console) {
+			console.warn('DEPRECATION: Fucking EU cookie lišta bude k 1. 9. 2018 ukončena, viz https://github.com/jakubboucek/fucking-eu-cookies/issues/14');
+		}
+	}
+
 	init();
+	deprecationAlert();
 
 })(window, window.document);

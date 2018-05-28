@@ -1,4 +1,6 @@
 # Fucking EU cookies
+> **Deprecated** - Lištu prosím nepoužívejte, její vývoj byl ukončen a bude zcela ukončena ([více informací](https://github.com/jakubboucek/fucking-eu-cookies/issues/14#issue-325497314)).
+
 One-file zasraná hláška pro zasranou EU, v jednom scriptu, 1,5 kB, 1 request, TLS (SSL), asynchronní, hostováno
 na [S3](https://aws.amazon.com/s3/), CDN před [CloudFront](https://aws.amazon.com/cloudfront/), bez závislosti na jQuery, s podporou Tag manageru a navrženo se záměrem nejméně obtěžovat uživatele.
 

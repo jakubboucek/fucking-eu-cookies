@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 		},
 		copy: {
 			styles: {
-				src: ['index.html', 'source/triangle.svg'],
+				src: ['index.html', 'source/triangle.svg', 'source/triangle-red.svg'],
 				dest: 'build/',
 				flatten: true,
 				expand: true
