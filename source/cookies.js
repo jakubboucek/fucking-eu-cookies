@@ -150,7 +150,7 @@
 
 	function deprecationAlert() {
 		if (console) {
-			console.warn('DEPRECATION: Fucking EU cookie lišta bude k 1. 9. 2018 ukončena, viz https://github.com/jakubboucek/fucking-eu-cookies/issues/14');
+			console.error('DEPRECATION: Fucking EU cookie lišta bude k 1. 9. 2018 ukončena, viz https://github.com/jakubboucek/fucking-eu-cookies/issues/14');
 		}
 	}
 
