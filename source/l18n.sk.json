@@ -4,5 +4,6 @@
 	"more": "Viac informácií",
 	"link": "https://policies.google.com/technologies/cookies?hl=sk",
 	"deprecationLink": "https://github.com/jakubboucek/fucking-eu-cookies/issues/14#issue-325497314",
-	"deprecationTitle": "VYŽADOVANÁ AKCE: Tato lišta bude ukončena – klikněte pro další informace"
+	"deprecationTitle": "[FUCKING EU COOKIE] VYŽADOVANÁ AKCE: Tato lišta bude za %days dnů vypnuta – klikněte pro další informace",
+	"deprecationMessage": "[FUCKING EU COOKIE] Projekt bude k 1. 9. 2018 (za %days dnů) vypnut, viz https://github.com/jakubboucek/fucking-eu-cookies/issues/14 . Prosím, odstraňte tuto lištu ze svého webu."
 }

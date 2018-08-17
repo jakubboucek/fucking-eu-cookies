@@ -19,11 +19,18 @@
 				options: options
 			}, null, '\t') %>;
 
+	//ugly hack
+	var daysLeft = Math.max(0, Math.ceil((new Date('2018-09-01T00:00:00+02:00').getTime() - new Date().getTime())/(3600*24*1000)));
+	includes.l18n.deprecationTitle = includes.l18n.deprecationTitle.replace('%days', daysLeft);
+	includes.l18n.deprecationMessage = includes.l18n.deprecationMessage.replace('%days', daysLeft);
+
 	var config = {};
 
 	function init() {
 		w[userVariable] = w[userVariable] || {};
 		config = buildConfig(includes, w[userVariable]);
+
+		deprecationAlert();
 
 		invokeEvent('init', includes.version);
 
@@ -150,11 +157,10 @@
 
 	function deprecationAlert() {
 		if (console) {
-			console.error('DEPRECATION: Fucking EU cookie lišta bude k 1. 9. 2018 ukončena, viz https://github.com/jakubboucek/fucking-eu-cookies/issues/14');
+			console.error(config.l18n.deprecationMessage);
 		}
 	}
 
 	init();
-	deprecationAlert();
 
 })(window, window.document);
