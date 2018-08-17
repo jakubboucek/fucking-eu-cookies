@@ -7,6 +7,8 @@
 			}, null, '\t') %>;
 
 	function shutdownAlert() {
+		d[identificator] = true;
+
 		var message = config.l18n.shutdownNotice + " (" + identificator + " v" + config.version + ")";
 
 		if (console) {
