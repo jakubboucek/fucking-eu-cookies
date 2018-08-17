@@ -150,7 +150,7 @@
 			reason = '1';
 		}
 		var date = new Date();
-		date.setFullYear(date.getHours() + 1);
+		date.setHours(date.getHours() + 1);
 		var expires = '; expires=' + date.toGMTString();
 		d.cookie = cookieIdentificator + '=' + encodeURIComponent(reason) + expires + '; path=/';
 	}
