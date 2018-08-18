@@ -1,7 +1,7 @@
 (function(w, d){
-	var identificator = 'fucking-eu-cookies';
+    const identificator = 'fucking-eu-cookies';
 
-	var config = <%= JSON.stringify({
+    const config = <%= JSON.stringify({
 				version: pkg.version,
 				l18n: l18n
 			}, null, '\t') %>;
@@ -9,9 +9,9 @@
 	function shutdownAlert() {
 		d[identificator] = true;
 
-		var message = config.l18n.shutdownNotice + " (" + identificator + " v" + config.version + ")";
+        const message = config.l18n.shutdownNotice + " (" + identificator + " v" + config.version + ")";
 
-		if (console) {
+        if (console) {
 			console.error(message);
 		}
 
