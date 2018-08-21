@@ -76,8 +76,8 @@
 
 		var div = d.createElement('div');
 		div.className = identificator + ' fucking-priority';
-        div.setAttribute('data-version', includes.version);
-        div.innerHTML = html;
+		div.setAttribute('data-version', includes.version);
+		div.innerHTML = html;
 		head.appendChild(style);
 		var insertTo = config.options.insertTo;
 		var targetElement;
