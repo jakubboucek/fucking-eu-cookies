@@ -76,13 +76,14 @@
 
 		var div = d.createElement('div');
 		div.className = identificator + ' fucking-priority';
-		div.innerHTML = html;
+        div.setAttribute('data-version', includes.version);
+        div.innerHTML = html;
 		head.appendChild(style);
 		var insertTo = config.options.insertTo;
 		var targetElement;
-		if (insertTo == 'body-begin') {
+		if (insertTo === 'body-begin') {
 			body.insertBefore(div, body.firstChild);
-		} else if (insertTo == 'body-end') {
+		} else if (insertTo === 'body-end') {
 			body.insertBefore(div, null);
 		} else if (targetElement = document.getElementById(insertTo)) {
 			targetElement.insertBefore(div, null);
