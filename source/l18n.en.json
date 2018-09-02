@@ -1,9 +1,3 @@
 {
-	"text": "By using this site you agree to the use of cookies for analytics, personalised content and ads.",
-	"accept": "Got it",
-	"more": "Learn more",
-	"link": "https://policies.google.com/technologies/cookies?hl=en",
-	"deprecationLink": "https://github.com/jakubboucek/fucking-eu-cookies/issues/14#issue-325497314",
-	"deprecationTitle": "ACTION REQUIRED: This panel will be shutdown at next %days days - click for more info",
-	"deprecationMessage": "[FUCKING EU COOKIE] Project will be shutdown at 9/1/2018 (in %days days), see more at https://github.com/jakubboucek/fucking-eu-cookies/issues/14 (czech language only). Please remove this script from Your website."
+    "shutdownNotice": "[SHUTDOWN NOTICE] Fucking EU cookie panel was shutdown, please remove it. More info at: https://github.com/jakubboucek/fucking-eu-cookies/issues/14"
 }
