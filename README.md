@@ -1,13 +1,11 @@
 # Fucking EU cookies
-One-file zasraná hláška pro zasranou EU, v jednom scriptu, 1,5 kB, 1 request, TLS (SSL), asynchronní, hostováno
-na [S3](https://aws.amazon.com/s3/), CDN před [CloudFront](https://aws.amazon.com/cloudfront/), bez závislosti na jQuery, s podporou Tag manageru a navrženo se záměrem nejméně obtěžovat uživatele.
-
-*[EN] Sorry, this readme is currently possible only in Czech, because main target users are in CZ.*
+One-file zasraná hláška pro zasranou EU, v jednom scriptu, 1,5 kB, 1 request, TLS (SSL), asynchronní, bez závislosti na jQuery, s podporou Tag manageru a navrženo se záměrem nejméně obtěžovat uživatele.
 
 ## Instalace
-Pro nainstalování tohoto rozšíření stačí do stránky vložit následující kód:
+Pro nainstalování tohoto rozšíření stačí stáhnout [poslední verzi scriptu](https://github.com/jakubboucek/fucking-eu-cookies/releases/latest),
+ten umístit na svůj web a pak do HTML stránky vložit následující kód:
 ```html
-<script src="//d2z9iq901qkqk8.cloudfront.net/cz.js" async></script>
+<script src="/cesta/k/souboru/fucking-eu-cookies-cz.js" async></script>
 ```
 Kód můžete vložit kamkoliv do stránky, ale nejlépe někam mezi `<head>` a `</head>`.
 
@@ -114,7 +112,8 @@ Tento kód uveďte vždy před voláním lišty, tedy např.:
 <script>
 	var fucking_eu_config = { … };
 </script>
-<script src="//d2z9iq901qkqk8.cloudfront.net/cz.js" async></script>
+<script src="/cesta/k/souboru/fucking-eu-cookies-cz.js" async></script>
+
 ```
 
 ## Obtěžování uživatele
@@ -137,9 +136,6 @@ Podpora browserů počítá pouze s moderními browsery. V zastaralých verzích
 Záleží mi na tom, aby se ani ve starších verzích nic nerozbilo. Pokud se lišta zobrazila opravdu chybně, prosím o nahlášení.
 
 Připojovaný soubor má nastaveno velmi dlouhé cachování, aby tento soubor byl v koncových stanicích ukládán co nejdéle. Výhodou je velmi rychlé načítání. Nevýhodou je poměrně velký rozptyl verzí, které mohou mít v jednom okamžiku uživatelé na počítači. Při modifikacích a ovládání lišty dbejte na doporučení v návodech, které zohledňují zpětnou kompatibilitu.
-
-## Zabezpečení
-Knihovna je hostována na serverech Amazonu na službě [Simple storage service](https://aws.amazon.com/s3/) a servírována přes (CloudFront CDN](https://aws.amazon.com/cloudfront/), které vynikají vysokou dostupností a zabezpečením. Protože se jedná o script vkládaný do stránky, byla zvoleno toto řešení právě s ohledem na zabezpečení minimalizující možnosti neautorizovaného přístupu.
 
 ## Changelist
 Look here: https://github.com/jakubboucek/fucking-eu-cookies/releases
